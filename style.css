@@ -366,3 +366,36 @@ font-weight:500;
 letter-spacing:.5px;
 
 }
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+padding:70px 8%;
+background:#fff;
+text-align:center;
+}
+
+.stat{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.stat h2{
+font-size:42px;
+color:#b76e79;
+margin-bottom:10px;
+font-family:'Cormorant Garamond',serif;
+}
+
+.stat p{
+font-size:18px;
+color:#555;
+}
+
+@media(max-width:768px){
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+}
