@@ -427,3 +427,40 @@ line-height:1.9;
 color:#555;
 margin-bottom:30px;
 }
+.categories{
+padding:80px 8%;
+background:#fff;
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.category-box{
+background:#fff4f8;
+padding:35px;
+border-radius:20px;
+text-align:center;
+transition:.3s;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.category-box:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+.category-box h3{
+color:#b76e79;
+margin-bottom:15px;
+font-size:28px;
+font-family:'Cormorant Garamond',serif;
+}
+
+.category-box p{
+color:#666;
+margin-bottom:20px;
+line-height:1.7;
+}
