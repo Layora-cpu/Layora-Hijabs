@@ -403,3 +403,27 @@ color:#555;
 grid-template-columns:repeat(2,1fr);
 }
 }
+.about-layora{
+padding:80px 10%;
+background:#fff4f8;
+text-align:center;
+}
+
+.about-content{
+max-width:900px;
+margin:auto;
+}
+
+.about-content h2{
+font-size:48px;
+color:#b76e79;
+font-family:'Cormorant Garamond',serif;
+margin-bottom:25px;
+}
+
+.about-content p{
+font-size:18px;
+line-height:1.9;
+color:#555;
+margin-bottom:30px;
+}
