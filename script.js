@@ -1,119 +1,61 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbwDGkUZjzxnhVq2-E3Ky_OP9-Jsw6NvXT0UUljvEW0afxkAJT568lPIeEl5nTmC-2Gh/exec";
-// Welcome Message
-console.log("Welcome to Layora");
 
-// Navbar Shadow on Scroll
-window.addEventListener("scroll", function () {
-
-const navbar = document.querySelector(".navbar");
-
-if (window.scrollY > 50) {
-navbar.style.boxShadow = "0 10px 25px rgba(0,0,0,0.15)";
-} else {
-navbar.style.boxShadow = "0 5px 15px rgba(0,0,0,0.08)";
-}
-
-});
-
-// Smooth Fade Animation
-const cards = document.querySelectorAll(".card");
-
-const observer = new IntersectionObserver((entries) => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity = "1";
-entry.target.style.transform = "translateY(0px)";
-
-}
-
-});
-
-});
-
-cards.forEach(card=>{
-
-card.style.opacity="0";
-card.style.transform="translateY(40px)";
-card.style.transition="0.8s";
-
-observer.observe(card);
-
-});
-const topBtn=document.getElementById("topBtn");
-
-window.onscroll=function(){
-
-if(document.body.scrollTop>300||document.documentElement.scrollTop>300){
-
-topBtn.style.display="block";
-
-}else{
-
-topBtn.style.display="none";
-
-}
-
-};
-
-topBtn.onclick=function(){
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
-const orderForm = document.getElementById("orderForm");
-
-if (orderForm) {
-
-orderForm.addEventListener("submit", async function(e){
+document.getElementById("checkoutForm").addEventListener("submit", async function(e){
 
 e.preventDefault();
 
-const data = {
-
-name: document.getElementById("name").value,
-
-phone: document.getElementById("phone").value,
-
-email: document.getElementById("email").value,
-
-address: document.getElementById("address").value,
-
-products: document.getElementById("products").value,
-
-quantity: document.getElementById("quantity").value,
-
-total: document.getElementById("total").value,
-
-payment: document.getElementById("payment").value
-
+const data={
+name:document.getElementById("name").value,
+phone:document.getElementById("phone").value,
+email:document.getElementById("email").value,
+address:document.getElementById("address").value,
+products:document.getElementById("products").value,
+quantity:document.getElementById("quantity").value,
+total:document.getElementById("total").value,
+payment:document.getElementById("payment").value
 };
 
-const response = await fetch(API_URL,{
+document.getElementById("result").innerHTML="Submitting Order...";
 
+try{
+
+const response=await fetch(API_URL,{
 method:"POST",
-
+headers:{
+"Content-Type":"application/json"
+},
 body:JSON.stringify(data)
-
 });
 
-const result = await response.json();
+const result=await response.json();
 
-document.getElementById("result").innerHTML =
+document.getElementById("result").innerHTML=
+"<h3>✅ Order Placed Successfully</h3><p>Order ID: <b>"+result.orderId+"</b></p>";
 
-<h2>✅ Order Placed Successfully</h2>
+const whatsappMessage=
+*New Layora Order*%0A
+Order ID: ${result.orderId}%0A
+Name: ${data.name}%0A
+Phone: ${data.phone}%0A
+Address: ${data.address}%0A
+Products: ${data.products}%0A
+Quantity: ${data.quantity}%0A
+Amount: ₹${data.total}%0A
+Payment: ${data.payment};
 
-<p>Your Order ID is <b>${result.orderId}</b></p>
-;
+window.open(
+"https://wa.me/917899315879?text="+whatsappMessage,
+"_blank"
+);
 
-});
+document.getElementById("checkoutForm").reset();
+
+}catch(err){
+
+document.getElementById("result").innerHTML="❌ Error placing order.";
+
+console.log(err);
 
 }
+
+});
