@@ -69,3 +69,51 @@ behavior:"smooth"
 });
 
 };
+const orderForm = document.getElementById("orderForm");
+
+if (orderForm) {
+
+orderForm.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const data = {
+
+name: document.getElementById("name").value,
+
+phone: document.getElementById("phone").value,
+
+email: document.getElementById("email").value,
+
+address: document.getElementById("address").value,
+
+products: document.getElementById("products").value,
+
+quantity: document.getElementById("quantity").value,
+
+total: document.getElementById("total").value,
+
+payment: document.getElementById("payment").value
+
+};
+
+const response = await fetch(API_URL,{
+
+method:"POST",
+
+body:JSON.stringify(data)
+
+});
+
+const result = await response.json();
+
+document.getElementById("result").innerHTML =
+
+<h2>✅ Order Placed Successfully</h2>
+
+<p>Your Order ID is <b>${result.orderId}</b></p>
+;
+
+});
+
+}
