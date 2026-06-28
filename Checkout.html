@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layora Checkout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="checkout">
+
+<h1>Checkout</h1>
+
+<form id="orderForm">
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="tel" id="phone" placeholder="Phone Number" required>
+
+<input type="email" id="email" placeholder="Email (Optional)">
+
+<textarea id="address" placeholder="Full Address" required></textarea>
+
+<input type="text" id="products" placeholder="Products" required>
+
+<input type="number" id="quantity" placeholder="Quantity" required>
+
+<input type="number" id="total" placeholder="Total Amount" required>
+
+<select id="payment">
+<option value="Cash on Delivery">Cash on Delivery</option>
+<option value="Online Payment">Online Payment</option>
+</select>
+
+<button type="submit" class="btn">
+Place Order
+</button>
+
+</form>
+
+<div id="result"></div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
