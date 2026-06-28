@@ -641,3 +641,72 @@ margin:30px 0;
 text-align:center;
 color:#aaa;
 }
+.why-layora{
+
+padding:90px 10%;
+
+background:white;
+
+text-align:center;
+
+}
+
+.why-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:30px;
+
+margin-top:50px;
+
+}
+
+.why-card{
+
+padding:40px;
+
+border-radius:20px;
+
+background:#fff4f8;
+
+transition:.4s;
+
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.why-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.why-card h1{
+
+font-size:55px;
+
+margin-bottom:20px;
+
+}
+
+.why-card h3{
+
+margin-bottom:15px;
+
+color:#b76e79;
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:30px;
+
+}
+
+.why-card p{
+
+line-height:1.8;
+
+color:#666;
+
+}
